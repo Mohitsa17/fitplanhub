@@ -1,82 +1,111 @@
 # 🏋️ FitPlanHub – Trainers & Users Fitness Platform
 
-FitPlanHub is a full-stack web application that connects **fitness trainers** with **users** through structured fitness plans and paid subscriptions. Trainers can create and manage fitness plans, while users can follow trainers, subscribe to plans, and access personalized fitness content.
 
-This project is built as part of a placement task to demonstrate backend logic, database relationships, authentication, and role-based access control.
+
+> FitPlanHub is a full-stack web application where certified fitness trainers create fitness plans and users can explore, follow trainers, and subscribe to paid fitness programs.  
+> The project demonstrates role-based authentication, access control, database relationships, and clean frontend–backend integration.
+
+---
+🚀 **Live Demo:**  
+👉 https://fitplanhublive.vercel.app/
+
+## 🔐 Quick Access 
+
+To avoid an empty experience, please use the demo credentials below to explore the platform with real data.
+
+### 👨‍🏫 Trainer Account
+- **Email:** mohitrp1729@gmail.com  
+- **Password:** 123456  
+
+👉 Access trainer dashboard, create/edit plans, and view followers.
+
+### 👤 User Account
+- **Email:** kunal@gmail.com  
+- **Password:** 123456  
+
+👉 Explore plans, follow trainers, subscribe to plans, and view personalized feed.
 
 ---
 
-## 🚀 Features Overview
+## 📌 Project Overview
 
-### 🔐 Authentication & Roles
+**FitPlanHub** is designed to simulate a real-world fitness subscription platform with clear separation between **Trainers** and **Users**.
 
-* User and Trainer signup & login
-* Secure password hashing using bcrypt
-* JWT-based authentication
-* Role-based access (User vs Trainer)
+- Trainers act as service providers who create and manage fitness plans.
+- Users act as customers who follow trainers and subscribe to their plans.
+- Access to plan details is controlled through subscriptions.
+
+This project focuses on **backend logic, role-based access, and clean UI behavior**, rather than superficial features.
+
+---
+
+## ✨ Key Features Implemented
+
+### 🔐 Authentication & Authorization
+- Signup and login for **Users** and **Trainers**
+- Password hashing using bcrypt
+- JWT-based authentication
+- Role-based UI and route protection
 
 ---
 
 ### 🏋️ Trainer Features
-
-* Trainer dashboard
-* Create fitness plans
-* Edit and delete own plans
-* View list of own plans
-* View follower count and followers list
+- Trainer dashboard
+- Create fitness plans (title, description, price, duration, etc.)
+- Edit and delete only their own plans
+- View follower count and followers list
+- Trainer profile with brand details
 
 ---
 
 ### 👤 User Features
-
-* View all available fitness plans (preview mode)
-* Follow and unfollow trainers
-* Subscribe to fitness plans (simulated payment)
-* Access full plan details after subscription
-* Personalized feed showing plans from followed trainers
-* View trainer profiles and their plans
+- Browse all fitness plans (preview mode)
+- Follow / unfollow trainers
+- Subscribe to fitness plans (simulated payment)
+- Access full plan details after subscription
+- Personalized feed showing plans from followed trainers
+- View subscribed plans clearly
 
 ---
 
 ### 🔒 Access Control
-
-* Only trainers can create, edit, or delete plans
-* Only users can subscribe to plans
-* Non-subscribed users see preview details only
-* Subscribed users get full access to plan content
-* Trainers cannot subscribe or follow anyone
+- Non-subscribed users can only see:
+  - Plan title
+  - Trainer name
+  - Price
+- Subscribed users get full plan access
+- Trainers cannot subscribe to plans
+- Users cannot create or manage plans
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-
-* React (Vite)
-* React Router
-* Axios
-* Tailwind CSS
-* Framer Motion (light animations)
+- React (Vite)
+- React Router
+- Axios
+- Tailwind CSS
+- Framer Motion (subtle animations)
 
 ### Backend
-
-* Node.js
-* Express.js
-* MongoDB (Mongoose)
-* JWT Authentication
-* bcrypt for password hashing
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- JWT Authentication
+- bcrypt for password hashing
 
 ### Deployment
-
-* Frontend: Vercel
-* Backend: Render
-* Database: MongoDB Atlas
+- Frontend: Vercel  
+- Backend: Render  
+- Database: MongoDB Atlas  
 
 ---
 
-## 📁 Project Structure
+## 🗂️ Project Structure
 
 ```
+
 fitplanhub/
 │
 ├── backend/
@@ -84,30 +113,27 @@ fitplanhub/
 │   ├── models/
 │   ├── routes/
 │   ├── middleware/
-│   ├── config/
-│   ├── app.js
 │   └── server.js
 │
 ├── frontend/
 │   ├── pages/
 │   ├── components/
 │   ├── services/
-│   ├── App.jsx
-│   └── main.jsx
+│   └── App.jsx
 │
 └── README.md
-```
+
+````
 
 ---
 
 ## ⚙️ How to Run the Project Locally
 
 ### 1️⃣ Clone the Repository
-
 ```bash
-git clone <repository-url>
+git clone <your-github-repo-url>
 cd fitplanhub
-```
+````
 
 ---
 
@@ -118,24 +144,18 @@ cd backend
 npm install
 ```
 
-Create a `.env` file in the backend folder:
+Create a `.env` file:
 
 ```env
 PORT=5000
-MONGO_URI=your_mongodb_atlas_connection_string
-JWT_SECRET=your_jwt_secret
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
 ```
 
-Start backend server:
+Run backend:
 
 ```bash
 npm run dev
-```
-
-Backend will run on:
-
-```
-http://localhost:5000
 ```
 
 ---
@@ -143,7 +163,7 @@ http://localhost:5000
 ### 3️⃣ Frontend Setup
 
 ```bash
-cd ../frontend
+cd frontend
 npm install
 npm run dev
 ```
@@ -156,38 +176,29 @@ http://localhost:5173
 
 ---
 
-## 🔄 Application Flow
+## 🧪 What This Project Demonstrates
 
-* Trainer signs up → creates fitness plans
-* User signs up → follows trainers
-* User feed shows plans from followed trainers
-* User subscribes to a plan → gains full access
-* Trainer can view followers and manage plans
-
----
-
-## 📌 Notes
-
-* Payment is simulated (no real payment gateway)
-* Images are used via public image URLs
-* Project focuses on backend logic, role separation, and database relationships
-* UI is kept clean and responsive
-
----
-
-## 🎯 Purpose of the Project
-
-This project demonstrates:
-
-* REST API design
-* Role-based authentication & authorization
-* Database relationships (one-to-many, many-to-many)
+* Backend logic & API design
+* MongoDB relationships (one-to-many, many-to-many)
+* Authentication & authorization
+* Role-based access control
 * CRUD operations
-* Real-world application logic
+* Clean and maintainable code structure
+* Real-world application flow
+
+---
+
+## 📝 Notes 
+
+* No real payment gateway is used (subscription is simulated as required).
+* Dummy Indian fitness brands and realistic pricing are used to simulate production-like data.
+* The project prioritizes **correct functionality over over-engineering**.
 
 ---
 
 ## 👨‍💻 Author
 
-Developed by **MohitSa**
+developed by **MohitSa**
+
+---
 
