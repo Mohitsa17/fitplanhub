@@ -7,7 +7,7 @@ const createPlan = async (req, res) => {
       return res.status(403).json({ message: 'Only trainers can create plans' });
     }
 
-    const { title, description, price, duration } = req.body;
+    const { title, description, price, duration, difficulty, category, equipment, frequency, image } = req.body;
 
     if (!title || !description || !price || !duration) {
       return res.status(400).json({ message: 'All fields are required' });
@@ -18,6 +18,11 @@ const createPlan = async (req, res) => {
       description,
       price,
       duration,
+      difficulty,
+      category,
+      equipment,
+      frequency,
+      image,
       trainer: req.userId,
     });
 
@@ -50,7 +55,7 @@ const updatePlan = async (req, res) => {
     }
 
     const { id } = req.params;
-    const { title, description, price, duration } = req.body;
+    const { title, description, price, duration, difficulty, category, equipment, frequency, image } = req.body;
 
     const plan = await Plan.findById(id);
 
@@ -66,6 +71,11 @@ const updatePlan = async (req, res) => {
     if (description) plan.description = description;
     if (price !== undefined) plan.price = price;
     if (duration) plan.duration = duration;
+    if (difficulty) plan.difficulty = difficulty;
+    if (category) plan.category = category;
+    if (equipment) plan.equipment = equipment;
+    if (frequency) plan.frequency = frequency;
+    if (image) plan.image = image;
 
     await plan.save();
 

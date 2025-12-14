@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 // work around ESLint `no-unused-vars` false positives for JSX member usage
@@ -8,10 +8,30 @@ import api from '../services/api';
 import PlanCard from '../components/PlanCard';
 
 const Landing = () => {
+  const navigate = useNavigate();
   const isLoggedIn = !!localStorage.getItem('token');
   const [plans, setPlans] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    // Redirect logged-in users to their dashboard
+    const token = localStorage.getItem('token');
+    const userStr = localStorage.getItem('user');
+    if (token && userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        if (user.role === 'trainer') {
+          navigate('/trainer/dashboard');
+        } else {
+          navigate('/feed');
+        }
+      } catch (e) {
+        // Invalid user data, let them stay on landing (or clear storage)
+        localStorage.clear();
+      }
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const fetchPlans = async () => {
@@ -280,7 +300,7 @@ const Landing = () => {
                 className="relative"
               >
                 <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                  <div className="text-6xl font-bold text-blue-100 mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-emerald-500 rounded-2xl flex items-center justify-center text-2xl font-bold text-white mb-6 shadow-lg shadow-blue-500/20 transform -rotate-3">
                     {item.step}
                   </div>
                   <h3 className="text-2xl font-semibold text-gray-900 mb-3">

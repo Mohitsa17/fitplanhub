@@ -137,40 +137,57 @@ const TrainerProfile = () => {
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Profile Header */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
-          <div className="h-32 bg-gradient-to-r from-blue-500 to-purple-600"></div>
-          <div className="px-8 pb-8">
-            <div className="relative flex justify-between items-end -mt-12 mb-6">
-              <div className="flex items-end">
-                <div className="w-24 h-24 rounded-full border-4 border-white bg-gray-200 overflow-hidden">
+        {/* Profile Header */}
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden mb-8">
+          {/* Modern Gradient Banner */}
+          <div className="h-48 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 relative">
+            <div className="absolute inset-0 bg-black/10"></div>
+          </div>
+
+          <div className="px-8 pb-8 relative">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end -mt-16 mb-6">
+              <div className="flex flex-col md:flex-row items-center md:items-end">
+                {/* Profile Image */}
+                <div className="w-32 h-32 rounded-full border-4 border-white shadow-lg bg-white overflow-hidden z-10">
                   {profile.profile?.profileImage ? (
                     <img src={profile.profile.profileImage} alt={profile.name} className="w-full h-full object-cover" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gray-300 text-gray-500 text-2xl font-bold">
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 text-gray-400 text-4xl font-bold">
                       {profile.name.charAt(0)}
                     </div>
                   )}
                 </div>
-                <div className="ml-4 mb-1">
-                  <h1 className="text-2xl font-bold text-gray-900">{profile.profile?.brandName || profile.name}</h1>
-                  <p className="text-gray-600">{profile.profile?.serviceName || 'Fitness Trainer'}</p>
+
+                {/* Name & Info */}
+                <div className="mt-4 md:mt-0 md:ml-6 md:mb-1 text-center md:text-left">
+                  <div className="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl px-6 py-3 shadow-lg relative z-10 transform -skew-x-2">
+                    <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight skew-x-2">
+                      {profile.profile?.brandName || profile.name}
+                    </h1>
+                    <p className="text-lg text-indigo-100 font-semibold mt-0.5 skew-x-2">
+                      {profile.profile?.serviceName || 'Fitness Trainer'}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="flex gap-2">
+
+              {/* Action Buttons */}
+              <div className="mt-6 md:mt-0 md:mb-4 flex gap-3 z-10">
                 {isOwner ? (
                   <button
                     onClick={() => setIsEditing(!isEditing)}
-                    className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 font-medium"
+                    className="px-6 py-2.5 bg-white border border-gray-200 text-gray-700 rounded-full hover:bg-gray-50 hover:border-gray-300 font-semibold shadow-sm transition-all"
                   >
                     {isEditing ? 'Cancel Edit' : 'Edit Profile'}
                   </button>
                 ) : (
                   <>
-                    {/* Only show follow button if viewer is NOT a trainer */}
                     {JSON.parse(localStorage.getItem('user') || '{}').role !== 'trainer' && (
                       <button
                         onClick={handleFollow}
-                        className={`px-6 py-2 rounded-md font-medium text-white transition-colors ${isFollowing ? 'bg-gray-500 hover:bg-gray-600' : 'bg-blue-600 hover:bg-blue-700'
+                        className={`px-8 py-2.5 rounded-full font-bold text-white shadow-md transition-all transform hover:-translate-y-0.5 ${isFollowing
+                          ? 'bg-gray-800 hover:bg-gray-900'
+                          : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700'
                           }`}
                       >
                         {isFollowing ? 'Unfollow' : 'Follow'}

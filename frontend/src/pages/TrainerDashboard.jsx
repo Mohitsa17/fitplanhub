@@ -501,7 +501,7 @@ const TrainerDashboard = () => {
                       </p>
                       <div className="flex justify-between items-center mb-5 pb-4 border-b border-gray-100">
                         <span className="text-xl font-bold text-gray-900">
-                          ${plan.price}
+                          ₹{plan.price}
                         </span>
                         <span className="text-sm text-gray-500">{plan.duration}</span>
                       </div>
