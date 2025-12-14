@@ -388,15 +388,15 @@ const Landing = () => {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-center gap-2">
                   <span>📧</span>
-                  <a href="mailto:support@fitplanhub.com" className="hover:text-emerald-400 transition-colors">support@fitplanhub.com</a>
+                  <a href="mailto:mohitrp1729@gmail.com" className="hover:text-emerald-400 transition-colors">mohitrp1729@gmail.com /a>
                 </li>
                 <li className="flex items-center gap-2">
                   <span>📞</span>
-                  <span>+1 (555) 123-4567</span>
+                  <span>+91 74890-95919</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span>📍</span>
-                  <span>123 Fitness Street, Gym City, FC 90210</span>
+                  <span>123 Fitness Street, E-sector, sudama nagar, Indore 90210</span>
                 </li>
               </ul>
             </div>
