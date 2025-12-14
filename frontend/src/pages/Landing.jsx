@@ -388,7 +388,7 @@ const Landing = () => {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-center gap-2">
                   <span>📧</span>
-                  <a href="mailto:mohitrp1729@gmail.com" className="hover:text-emerald-400 transition-colors">mohitrp1729@gmail.com /a>
+                  <a href="mailto:mohitrp1729@gmail.com" className="hover:text-emerald-400 transition-colors">mohitrp1729@gmail.com </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <span>📞</span>
