@@ -122,6 +122,7 @@ const Feed = () => {
                       <PlanCard
                         {...plan}
                         trainerName={plan.trainer?.name || 'Unknown Trainer'}
+                        brandName={plan.trainer?.profile?.brandName}
                         trainerId={plan.trainer?._id}
                         planId={plan._id || plan.id}
                       />

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 // mark 'motion' as used for linters that miss JSX member usage
@@ -121,7 +121,10 @@ const PlanDetails = () => {
 
           <div className="mb-8 pb-6 border-b border-gray-200">
             <p className="text-gray-600 mb-3">
-              by <span className="font-semibold text-gray-900">{plan.trainer?.name || 'Unknown Trainer'}</span>
+              by{' '}
+              <Link to={`/trainer/${plan.trainer?._id}`} className="hover:text-blue-600 hover:underline font-medium text-indigo-600">
+                {plan.trainer?.profile?.brandName || plan.trainer?.name || 'Unknown Trainer'}
+              </Link>
             </p>
             {!isPreviewOnly && (
               <div className="flex flex-wrap gap-3 mb-4">
@@ -164,8 +167,6 @@ const PlanDetails = () => {
               <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">{plan.description}</p>
             </div>
           )}
-
-
 
           {isPreviewOnly && (!user || isUser) && !isSubscribed && (
             <div className="mt-8 pt-6 border-t border-gray-200">

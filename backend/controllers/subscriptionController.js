@@ -51,7 +51,7 @@ const getSubscribedPlans = async (req, res) => {
     const subscriptions = await Subscription.find({ user: req.userId })
       .populate({
         path: 'plan',
-        populate: { path: 'trainer', select: 'name email' }
+        populate: { path: 'trainer', select: 'name email profile' }
       })
       .sort({ createdAt: -1 });
 

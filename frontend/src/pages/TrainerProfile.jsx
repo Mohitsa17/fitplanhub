@@ -294,6 +294,7 @@ const TrainerProfile = () => {
                   key={plan._id}
                   {...plan}
                   trainerName={profile.name}
+                  brandName={profile.profile?.brandName}
                   trainerId={profile._id}
                   planId={plan._id}
                 />

@@ -90,6 +90,7 @@ const Explore = () => {
                                 key={plan._id}
                                 {...plan}
                                 trainerName={plan.trainer?.name || 'Unknown Trainer'}
+                                brandName={plan.trainer?.profile?.brandName}
                                 trainerId={plan.trainer?._id}
                                 planId={plan._id}
                                 image={plan.image}

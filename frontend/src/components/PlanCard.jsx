@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 // ensure 'motion' is recognized by linters that don't pick up JSX member usage
 void motion;
 
-const PlanCard = ({ title, price, trainerName, trainerId, isSubscribed, planId, image }) => {
+const PlanCard = ({ title, price, trainerName, brandName, trainerId, isSubscribed, planId, image }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -36,11 +36,11 @@ const PlanCard = ({ title, price, trainerName, trainerId, isSubscribed, planId, 
           <p className="text-sm text-gray-500">
             by{' '}
             {trainerId ? (
-              <Link to={`/trainer/${trainerId}`} className="hover:text-blue-600 hover:underline">
-                {trainerName}
+              <Link to={`/trainer/${trainerId}`} className="hover:text-blue-600 hover:underline font-medium text-indigo-600">
+                {brandName || trainerName}
               </Link>
             ) : (
-              trainerName
+              <span className="font-medium text-indigo-600">{brandName || trainerName}</span>
             )}
           </p>
         </div>
@@ -51,10 +51,13 @@ const PlanCard = ({ title, price, trainerName, trainerId, isSubscribed, planId, 
           </div>
           <Link
             to={`/plans/${planId}`}
-            className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+            className="px-6 py-2 bg-indigo-600 text-red-600 text-sm font-semibold rounded-lg 
+             hover:bg-indigo-700 shadow-md hover:shadow-lg 
+             transition-all duration-200"
           >
             View Plan
           </Link>
+
         </div>
       </div>
     </motion.div>

@@ -13,7 +13,7 @@ const getUserFeed = async (req, res) => {
     const trainerIds = user.followedTrainers.map((trainer) => trainer._id);
 
     const plans = await Plan.find({ trainer: { $in: trainerIds } })
-      .populate('trainer', 'name email')
+      .populate('trainer', 'name email profile')
       .sort({ createdAt: -1 });
 
     const userSubscriptions = await Subscription.find({

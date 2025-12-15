@@ -115,7 +115,7 @@ const getPlanById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const plan = await Plan.findById(id).populate('trainer', 'name');
+    const plan = await Plan.findById(id).populate('trainer', 'name profile');
 
     if (!plan) {
       return res.status(404).json({ message: 'Plan not found' });
@@ -137,7 +137,10 @@ const getPlanById = async (req, res) => {
     const limitedPlan = {
       title: plan.title,
       price: plan.price,
-      trainer: plan.trainer ? { name: plan.trainer.name } : null,
+      trainer: plan.trainer ? {
+        name: plan.trainer.name,
+        brandName: plan.trainer.profile?.brandName
+      } : null,
     };
 
     res.json({ plan: limitedPlan });
@@ -148,7 +151,7 @@ const getPlanById = async (req, res) => {
 
 const getAllPlans = async (req, res) => {
   try {
-    const plans = await Plan.find().populate('trainer', 'name email');
+    const plans = await Plan.find().populate('trainer', 'name email profile');
     res.json(plans);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching plans' });
